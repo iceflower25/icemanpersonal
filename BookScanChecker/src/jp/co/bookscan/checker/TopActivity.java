@@ -2,18 +2,21 @@ package jp.co.bookscan.checker;
 
 
 
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
-import android.os.Build;
-import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.hardware.Camera;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
@@ -51,6 +54,8 @@ public class TopActivity extends FragmentActivity {
 			e.printStackTrace();
 		}
 		setTitle(getResources().getString(R.string.app_name) + "     ver." + versionName);
+		/*ActionBar bar = getActionBar();
+		bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#32bd68")));*/
 	}
 	
     public void onPause() {
@@ -64,8 +69,7 @@ public class TopActivity extends FragmentActivity {
 		switch(v.getId()) {
 		case R.id.btn_reader:
 			if (checkNetwork() && checkCamera())
-			    startActivity(new Intent(TopActivity.this.getApplicationContext(), ReaderActivity.class));
-			
+			    startActivity(new Intent(TopActivity.this.getApplicationContext(), ReaderActivity.class));			
 			break;
 
 		case R.id.btn_isbn:
@@ -76,6 +80,7 @@ public class TopActivity extends FragmentActivity {
 		case R.id.btn_app_info:
     		showAlertDialog(R.string.appinfo_title, R.string.appinfo_message);
 		    break;
+		    
 		default:
 			break;
 		}
@@ -139,5 +144,4 @@ public class TopActivity extends FragmentActivity {
 			return d;
 		}  
 	}
-
 }

@@ -7,8 +7,8 @@ import net.sourceforge.zbar.Image;
 import net.sourceforge.zbar.ImageScanner;
 import net.sourceforge.zbar.Symbol;
 import net.sourceforge.zbar.SymbolSet;
-import jp.co.bookscan.checker.CameraPreview;
-
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -25,9 +25,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -54,16 +55,22 @@ public class ReaderActivity extends FragmentActivity {
     static {
         System.loadLibrary("iconv");
     } 
-    
-    @Override
+   
+   @SuppressLint("NewApi")
+   @Override
     protected void onCreate(Bundle state) {
 
     	super.onCreate(state);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         setContentView(R.layout.reader);
+        
+        /*ActionBarの左のアイコンがクリックできるため追加*/        
+        if(android.os.Build.VERSION.SDK_INT >= 14) {
+        	getActionBar().setHomeButtonEnabled(true);
+        }
         
         autoFocusHandler = new Handler();
         camera = getCameraInstance();
@@ -173,6 +180,38 @@ public class ReaderActivity extends FragmentActivity {
        }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.readermenu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	int id = item.getItemId();
+    	boolean ret;
+        switch (id) {
+        case android.R.id.home:
+            //Do stuff
+        	startActivity(new Intent(ReaderActivity.this.getApplicationContext(), IsbnActivity.class));
+        	finish();
+        	ret = true;
+        	break;
+		case R.id.action_info:
+            //Do stuff
+            //return true;			
+			showAlertDialog(R.string.appinfo_title, R.string.appinfo_message);
+			ret = true;
+			break;
+		default:
+			ret = super.onOptionsItemSelected(item);
+			break;  
+        }
+        return ret;
+    }
+    
     /** A safe way to get an instance of the Camera object. */
     public static Camera getCameraInstance(){
         Camera c = null;
@@ -274,15 +313,34 @@ public class ReaderActivity extends FragmentActivity {
         float wUnit = w / 16;
         float hUnit = h / 24;
 
-        c.drawColor(0x9f000000);
+        //c.drawColor(0x9f000000);
+        c.drawColor(0x99444444);        
+        
+        //トップ不透明エリア
+        paint.setXfermode(modeSrc);
+        paint.setColor(0xff444444);
 
+        float h0 = 0;
+        float h1 = hUnit * 5;
+        c.drawRect(0 , h0, wUnit * 16, h1, paint);
+        
+        //透明エリア
         paint.setXfermode(modeSrc);
         paint.setColor(0);
 
-        float h0 = hUnit * 8;
-        float h1 = hUnit * 16;
+        h0 = hUnit * 9;
+        h1 = hUnit * 15;
         c.drawRect(0 , h0, wUnit * 16, h1, paint);
+        
+        //ボトム不透明エリア
+        paint.setXfermode(modeSrc);
+        paint.setColor(0xff444444);
 
+        h0 = hUnit * 19;
+        h1 = hUnit * 24;
+        c.drawRect(0 , h0, wUnit * 16, h1, paint);
+        
+        /*
         paint.setXfermode(modeSrcOver);
 
         paint.setColor(0xffff0000);
@@ -318,6 +376,7 @@ public class ReaderActivity extends FragmentActivity {
         path.lineTo(wUnit * 13 - d, h1 + d);
         path.close();
         c.drawPath(path,paint);
+        */        
 
         String strMain0 = getResources().getString(R.string.msgtxt_guidemain0);
         String strMain1 = getResources().getString(R.string.msgtxt_guidemain1);
@@ -328,15 +387,20 @@ public class ReaderActivity extends FragmentActivity {
         paint.setAntiAlias(true);
         paint.setTextAlign(Align.CENTER);
         
-        paint.setTextSize(wUnit * 5 / 6);
-        c.drawText(strMain0, wUnit * 8, hUnit * 4, paint);
-        c.drawText(strMain1, wUnit * 8, hUnit * 5, paint);
+        paint.setTextSize(wUnit * 4 / 6);
+        c.drawText(strMain0, wUnit * 8, (float)(hUnit * 2.2), paint);
+        c.drawText(strMain1, wUnit * 8, (float)(hUnit * 3.2), paint);
 
-        paint.setTextSize(wUnit * 3 / 5);
-        c.drawText(strSub0, wUnit * 8, hUnit * 19, paint);
-        c.drawText(strSub1, wUnit * 8, hUnit * 20, paint);
+        paint.setTextSize(wUnit * 4 / 6);
+        c.drawText(strSub0, wUnit * 8, (float)(hUnit * 21.2), paint);
+        c.drawText(strSub1, wUnit * 8, (float)(hUnit * 22.2), paint);
 
         ivOverlay.setImageBitmap(bmOverlay);
     }
 
+    private void showAlertDialog(int titleId, int msgId) {
+    	SimpleDialog.getNewInstance(getResources().getString(titleId),
+    			getResources().getString(msgId))
+    	.show(getSupportFragmentManager(), "dialog");
+    }
 }

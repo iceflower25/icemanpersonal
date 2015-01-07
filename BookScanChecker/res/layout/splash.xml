@@ -7,10 +7,10 @@
     android:background="#000000"
     >
     
-    <ImageView     		
+    <ImageView
 		android:layout_width="match_parent" 
 		android:layout_height="match_parent" 
 		android:scaleType="centerCrop"
-		android:src="@drawable/sp2"
-	/> 
+		android:src="@drawable/checker_kettei_fw"
+	/>
 </LinearLayout>

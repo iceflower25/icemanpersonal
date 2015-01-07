@@ -1,26 +1,58 @@
 package jp.co.bookscan.checker;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.hardware.Camera;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Window;
+import android.support.v4.app.FragmentActivity;
 
-
-public class SplashActivity extends Activity {	
+public class SplashActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);				
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.splash);
         Handler hdlr = new Handler();
         hdlr.postDelayed(new Runnable() {
         	@Override
         	public void run() {
-        		startActivity(new Intent(SplashActivity.this, TopActivity.class));
+        		/*startActivity(new Intent(SplashActivity.this, TopActivity.class));*/
+        		
+        		if (checkNetwork() && checkCamera())
+    			    startActivity(new Intent(SplashActivity.this.getApplicationContext(), ReaderActivity.class));    			    
+        		
         		finish();
         	}
         }, 800);
 	}
-}
+	
+	private boolean checkCamera() {
+		Camera c = ReaderActivity.getCameraInstance();
+		if (c == null) {
+    		showAlertDialog(R.string.title_alert, R.string.camera_notfound);
+			return false;
+		} else {
+			c.release();
+			return true;
+		}
+	}
+    private boolean checkNetwork() {
+    	NetworkInfo ni = ((ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+    
+    	if (ni == null || ni.isConnected() == false) {
+    		showAlertDialog(R.string.title_alert, R.string.network_notfound);
+			return false;
+    	} else {
+    		return true;
+    	}
+    }
 
+    private void showAlertDialog(int titleId, int msgId) {
+    	SimpleDialog.getNewInstance(getResources().getString(titleId),
+    			getResources().getString(msgId))
+    	.show(getSupportFragmentManager(), "dialog");
+    }
+    
+}

@@ -57,9 +57,21 @@
     <string name="btn_appinfo">アプリケーション情報ボタン</string>
     <string name="img_bookinfo">検索された書籍の表紙画像</string>
     
-    <string name="msgtxt_guidemain0">二本ある内の上のバーコードを</string>
-    <string name="msgtxt_guidemain1">下の枠内に合わせてください</string>
+    <string name="msgtxt_guidemain0">2本あるうちの上のバーコードを</string>
+    <string name="msgtxt_guidemain1">下の枠内に合わせてください。</string>
     <string name="msgtxt_guidesub0">バーコードは自動的にスキャンされます。</string>
-    <string name="msgtxt_guidesub1">影や光がバーコードに映り込まないようにしてください。 </string>
-        
+    <string name="msgtxt_guidesub1">影や光が映り込まないようにしてください。 </string>
+    
+    <string name="actionbar_color">#32bd68</string>
+    
+    <string name="action_info">action open</string>
+    
+    <string name="isbn_num1">ISBN978-1-23456-789-1</string>
+    <string name="isbn_num2">C1234 ￥1234E</string>
+    <string name="isbn_str1">本の裏の<font fgcolor="#ff00ff00">ISBNの番号</font>を下記の枠内に</string>
+    <string name="isbn_str1_1">本の裏の</string>
+    <string name="isbn_str1_2">ISBNの番号</string>
+    <string name="isbn_str1_3">を下記の枠内に</string>
+    <string name="isbn_str2">入力してください。</string>    
+    <string name="button_search">検索</string>
 </resources>
