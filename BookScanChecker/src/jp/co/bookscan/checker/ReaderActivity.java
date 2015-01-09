@@ -322,7 +322,8 @@ public class ReaderActivity extends FragmentActivity {
 
         float h0 = 0;
         float h1 = hUnit * 5;
-        c.drawRect(0 , h0, wUnit * 16, h1, paint);
+        ////c.drawRect(0 , h0, wUnit * 16, h1, paint);
+        c.drawRect(0 , h0, w, h1, paint);
         
         //透明エリア
         paint.setXfermode(modeSrc);
@@ -330,7 +331,8 @@ public class ReaderActivity extends FragmentActivity {
 
         h0 = hUnit * 9;
         h1 = hUnit * 15;
-        c.drawRect(0 , h0, wUnit * 16, h1, paint);
+        ////c.drawRect(0 , h0, wUnit * 16, h1, paint);
+        c.drawRect(0 , h0, w, h1, paint);
         
         //ボトム不透明エリア
         paint.setXfermode(modeSrc);
@@ -338,7 +340,8 @@ public class ReaderActivity extends FragmentActivity {
 
         h0 = hUnit * 19;
         h1 = hUnit * 24;
-        c.drawRect(0 , h0, wUnit * 16, h1, paint);
+        ////c.drawRect(0 , h0, wUnit * 16, h1, paint);
+        c.drawRect(0 , h0, w, h, paint);
         
         /*
         paint.setXfermode(modeSrcOver);

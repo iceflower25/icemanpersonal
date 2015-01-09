@@ -2,15 +2,12 @@ package jp.co.bookscan.checker;
 
 
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.hardware.Camera;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -20,6 +17,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager.LayoutParams;
@@ -35,8 +33,8 @@ public class TopActivity extends FragmentActivity {
 	protected void onCreate(Bundle state) {
 		super.onCreate(state);
 		
-		getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
+		getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);		
+		
 		int id = R.layout.main;
         //for Galaxy Tab(the device with irreguler configuration)
 		if (Build.MODEL.equals("SC-01C")|| Build.MODEL.equals("GT-P1000")) {

@@ -72,8 +72,8 @@ public class IsbnActivity extends FragmentActivity {
                      searchIsbn();
                      return true;
                     }
-                }
-                return true;
+                } 
+                return false;
             }
         });
         

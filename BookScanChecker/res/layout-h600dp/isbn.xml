@@ -12,7 +12,7 @@
         android:orientation="vertical">    
 <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="240dp"
+        android:layout_height="180dp"
         android:background="#ffffff"                
         android:orientation="vertical">
         <TextView
@@ -20,7 +20,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_marginTop="20dp"
-             android:textSize="30sp"             
+             android:textSize="26sp"             
              android:gravity="right"
              android:background="@drawable/back">
         </TextView>
@@ -28,9 +28,9 @@
              android:text="@+string/isbn_num2"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_marginTop="5dp"
-             android:layout_marginBottom="20dp"
-             android:textSize="30sp"             
+             android:layout_marginTop="3dp"
+             android:layout_marginBottom="3dp"
+             android:textSize="26sp"             
              android:gravity="right">
         </TextView>      
 <LinearLayout
@@ -67,7 +67,7 @@
              android:text="@+string/isbn_str2"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_marginTop="5dp"
+             android:layout_marginTop="3dp"
              android:textSize="20sp"             
              android:gravity="right">
         </TextView>
@@ -75,7 +75,7 @@
 </LinearLayout>
 <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="140dp"
         android:background="#444444"
         android:gravity="center"
         android:orientation="vertical">
@@ -84,24 +84,24 @@
 	        android:background="@drawable/backgroundshape"
 	        android:layout_height="wrap_content"  android:layout_width="match_parent"
 	        android:layout_marginLeft="20dp"     android:layout_marginRight="20dp"
-	        android:layout_marginTop="40dp"
+	        android:layout_marginTop="20dp"
 	        android:layout_marginBottom="10dp"
 	        android:paddingTop="3dp"
 	        android:paddingBottom="3dp"
-	        android:paddingLeft="100dp"
-	        android:paddingRight="30dp"
+	        android:paddingLeft="50dp"
+	        android:paddingRight="20dp"
 	        android:scrollHorizontally="true"
 	        android:inputType="number"
 	        android:hint="@+string/isbn_hint"
 	        android:gravity="fill_horizontal"
 	        android:drawableRight="@drawable/mushi"	        
-	        android:textSize="30sp"/>
+	        android:textSize="25sp"/>
         <Button
             android:id="@+id/search_button"
     		android:layout_width="wrap_content"
-    		android:layout_height="wrap_content"
+    		android:layout_height="50dp"
     		android:layout_marginTop="5dp"
-    		android:layout_marginBottom="30dp"    		
+    		android:layout_marginBottom="20dp"    		
     		android:background="@drawable/button"    		    		
     		android:onClick="buttonclick"
 		/>
@@ -126,7 +126,7 @@ android:layout_marginLeft="2dp"
 android:layout_weight="1"
 android:background="#FFFFFF"
 android:gravity="center"
-android:textSize="50sp"
+android:textSize="30sp"
 android:clickable="true"
 android:text="1" >
 </TextView>
@@ -141,7 +141,7 @@ android:layout_marginRight="2dp"
 android:layout_weight="1"
 android:background="#FFFFFF"
 android:gravity="center"
-android:textSize="50sp"
+android:textSize="30sp"
 android:clickable="true"
 android:text="2" >
 </TextView>
@@ -155,7 +155,7 @@ android:layout_marginRight="2dp"
 android:layout_weight="1"
 android:background="#FFFFFF"
 android:gravity="center"
-android:textSize="50sp"
+android:textSize="30sp"
 android:clickable="true"
 android:text="3" >
 </TextView>
@@ -176,7 +176,7 @@ android:layout_marginLeft="2dp"
 android:layout_weight="1"
 android:background="#FFFFFF"
 android:gravity="center"
-android:textSize="50sp"
+android:textSize="30sp"
 android:clickable="true"
 android:text="4">
 </TextView>
@@ -191,7 +191,7 @@ android:layout_marginRight="2dp"
 android:layout_weight="1"
 android:background="#FFFFFF"
 android:gravity="center"
-android:textSize="50sp"
+android:textSize="30sp"
 android:clickable="true"
 android:text="5">
 </TextView>
@@ -205,7 +205,7 @@ android:layout_marginRight="2dp"
 android:layout_weight="1"
 android:background="#FFFFFF"
 android:gravity="center"
-android:textSize="50sp"
+android:textSize="30sp"
 android:clickable="true"
 android:text="6" >
 </TextView>
@@ -226,7 +226,7 @@ android:layout_marginLeft="2dp"
 android:layout_weight="1"
 android:background="#FFFFFF"
 android:gravity="center"
-android:textSize="50sp"
+android:textSize="30sp"
 android:clickable="true"
 android:text="7">
 </TextView>
@@ -241,7 +241,7 @@ android:layout_marginRight="2dp"
 android:layout_weight="1"
 android:background="#FFFFFF"
 android:gravity="center"
-android:textSize="50sp"
+android:textSize="30sp"
 android:clickable="true"
 android:text="8">
 </TextView>
@@ -255,7 +255,7 @@ android:layout_marginRight="2dp"
 android:layout_weight="1"
 android:background="#FFFFFF"
 android:gravity="center"
-android:textSize="50sp"
+android:textSize="30sp"
 android:clickable="true"
 android:text="9" >
 </TextView>
@@ -276,7 +276,7 @@ android:layout_marginLeft="2dp"
 android:layout_weight="1"
 android:background="#adb0b5"
 android:gravity="center"
-android:textSize="50sp"
+android:textSize="30sp"
 android:clickable="true"
 android:text="Del">
 </TextView>
@@ -291,7 +291,7 @@ android:layout_marginRight="2dp"
 android:layout_weight="1"
 android:background="#FFFFFF"
 android:gravity="center"
-android:textSize="50sp"
+android:textSize="30sp"
 android:clickable="true"
 android:text="0">
 </TextView>
@@ -305,7 +305,7 @@ android:layout_marginRight="2dp"
 android:layout_weight="1"
 android:background="#93a9e6"
 android:gravity="center"
-android:textSize="50sp"
+android:textSize="30sp"
 android:clickable="true"
 android:text="Enter" >
 </TextView>
