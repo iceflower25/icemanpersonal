@@ -8,6 +8,7 @@ import net.sourceforge.zbar.ImageScanner;
 import net.sourceforge.zbar.Symbol;
 import net.sourceforge.zbar.SymbolSet;
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -25,10 +26,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -70,6 +73,10 @@ public class ReaderActivity extends FragmentActivity {
         /*ActionBarの左のアイコンがクリックできるため追加*/        
         if(android.os.Build.VERSION.SDK_INT >= 14) {
         	getActionBar().setHomeButtonEnabled(true);
+        }
+        
+        if(android.os.Build.VERSION.SDK_INT >= 11) {
+        	createCutomActionBarTitle();
         }
         
         autoFocusHandler = new Handler();
@@ -139,10 +146,10 @@ public class ReaderActivity extends FragmentActivity {
         }
         
         FrameLayout flPreview = (FrameLayout)findViewById(R.id.cameraPreview);
-        flPreview.removeView(ivOverlay);
-        flPreview.removeView(preview);
-        ivOverlay.setVisibility(View.GONE);
-        preview.stopPreview(); //neccessary?
+        ////flPreview.removeView(ivOverlay);
+        ////flPreview.removeView(preview);
+        ////ivOverlay.setVisibility(View.GONE);
+        preview.stopPreview(); //neccessary?   ???
         autoFocusHandler.removeCallbacks(doAutoFocus);
         preview = null;
         releaseCamera();
@@ -180,6 +187,7 @@ public class ReaderActivity extends FragmentActivity {
        }
     }
 
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
@@ -211,6 +219,7 @@ public class ReaderActivity extends FragmentActivity {
         }
         return ret;
     }
+    */
     
     /** A safe way to get an instance of the Camera object. */
     public static Camera getCameraInstance(){
@@ -405,5 +414,66 @@ public class ReaderActivity extends FragmentActivity {
     	SimpleDialog.getNewInstance(getResources().getString(titleId),
     			getResources().getString(msgId))
     	.show(getSupportFragmentManager(), "dialog");
+    }
+    
+    @SuppressLint("NewApi")
+	private void createCutomActionBarTitle() {
+		ActionBar actionBar = getActionBar();  
+		actionBar.setDisplayShowCustomEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
+
+        LayoutInflater inflator = LayoutInflater.from(this);
+        View v = inflator.inflate(R.layout.reader_actionbar, null);
+        actionBar.setDisplayShowHomeEnabled(false);
+                
+        
+        
+        /*
+        Typeface tf = Typeface.createFromAsset(getAssets(),"font/fat_tats.ttf");
+        TextView frag1 = (TextView)v.findViewById(R.id.titleFragment1);
+        frag1.setTypeface(tf);
+        TextView frag2 = (TextView)v.findViewById(R.id.titleFragment2);
+        frag2.setTypeface(tf);
+        
+        frag1.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(YourCurrentActivity.this, YourTargetActivity.class));
+                finish();
+            }
+        });
+        frag2.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(YourCurrentActivity.this, YourTargetActivity.class));
+                finish();
+            }
+        });
+        */
+        
+        ImageView home = (ImageView)v.findViewById(R.id.reader_action_bar_home);
+        ImageView info = (ImageView)v.findViewById(R.id.reader_action_bar_info);
+        
+        home.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(YourCurrentActivity.this, YourTargetActivity.class));
+               	startActivity(new Intent(ReaderActivity.this.getApplicationContext(), IsbnActivity.class));
+               	overridePendingTransition(R.anim.from_middle, R.anim.to_middle);
+               	////overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+	        	finish();	    
+            }
+        });
+        
+        info.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(YourCurrentActivity.this, YourTargetActivity.class));
+            	showAlertDialog(R.string.appinfo_title, R.string.appinfo_message);              
+            }
+        });
+
+        //assign the view to the actionbar
+        actionBar.setCustomView(v);
     }
 }

@@ -206,9 +206,7 @@ class BookInfoTask extends AsyncTask<String, Void, Integer> {
 	                   return;
 	                }}
 	            );
-
-	        }
-	        
+	        }	        
 			return dialog;
 		}  
     }

@@ -38,13 +38,13 @@
         <activity
             android:name="jp.co.bookscan.checker.ReaderActivity"
             android:label=""        
-            android:icon="@drawable/dial"     
+            android:icon="@drawable/dial_small"     
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="jp.co.bookscan.checker.IsbnActivity"
-            android:label=""
-            android:icon="@drawable/camera"
+            android:label=""            
+            android:icon="@drawable/camera_small"
             android:screenOrientation="portrait" >
         </activity>
         </application>
