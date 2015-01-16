@@ -8,7 +8,7 @@
 		</shape>
 	</item>
     <item>
-  	<bitmap android:src="@drawable/del"
+  	<bitmap android:src="@drawable/backspace48"
           android:gravity="center" />
 	</item>
  </layer-list>
