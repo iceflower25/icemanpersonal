@@ -2,22 +2,16 @@ package jp.co.bookscan.checker;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager.LayoutParams;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,8 +20,7 @@ import android.widget.TextView;
 public class IsbnActivity extends FragmentActivity {
 	private EditText isbnET;
 	private IsbnActivity activity;
-	private static BookInfoTask biTask = null;
-	private InputMethodManager imm;
+	private static BookInfoTask biTask = null;	
 	
 	@SuppressLint("NewApi")
 	@Override
@@ -50,11 +43,7 @@ public class IsbnActivity extends FragmentActivity {
         }
         
         isbnET = (EditText)findViewById(R.id.isbn_edittext);
-        
-        imm = (InputMethodManager)getSystemService(
-        	      Context.INPUT_METHOD_SERVICE);
-        //imm.hideSoftInputFromWindow(isbnET.getWindowToken(), 0);
-        	
+                	
         Button searchButton = (Button)findViewById(R.id.search_button);
         TextView num0TV = (TextView)findViewById(R.id.num0_button);
         TextView num1TV = (TextView)findViewById(R.id.num1_button);
@@ -69,30 +58,17 @@ public class IsbnActivity extends FragmentActivity {
         TextView delTV = (TextView)findViewById(R.id.del_button);
         TextView enterTV = (TextView)findViewById(R.id.enter_button);        
         
-        isbnET.setOnTouchListener(new OnTouchListener() {
-            @Override 
-            
-             
-            
+        isbnET.setOnTouchListener(new OnTouchListener() {            
+			@SuppressLint("ClickableViewAccessibility")
+			@Override
             public boolean onTouch(View v, MotionEvent event) {
-                //final int DRAWABLE_LEFT = 0;
-                //final int DRAWABLE_TOP = 1;
                 final int DRAWABLE_RIGHT = 2;
-                //final int DRAWABLE_BOTTOM = 3;
-
                 if(event.getAction() == MotionEvent.ACTION_UP) {
-                	int rg = isbnET.getRight();
-                	int wd = isbnET.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width();
-                	int df = rg - wd;
-                	float x = event.getRawX();
                     if(event.getRawX() >= (isbnET.getRight() - isbnET.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width() - isbnET.getPaddingRight()) ) {
-                        // your action here
-                     //Log.d("test", "x" + x);
                      searchIsbn();
                      return true;
                     }
                 }
-                //imm.hideSoftInputFromWindow(isbnET.getWindowToken(), 0);
                 return true;
             }
         });
@@ -203,41 +179,6 @@ public class IsbnActivity extends FragmentActivity {
             }
         });
 	}
-
-	/*
-	 @Override
-	    public boolean onCreateOptionsMenu(Menu menu) {
-	        // Inflate the menu items for use in the action bar
-	        MenuInflater inflater = getMenuInflater();
-	        inflater.inflate(R.menu.isbnmenu, menu);
-	        return super.onCreateOptionsMenu(menu);
-	    }
-	    
-	    @Override
-	    public boolean onOptionsItemSelected(MenuItem item) {
-	    	int id = item.getItemId();
-	    	boolean ret;
-	        switch (id) {
-	        case android.R.id.home:
-	            //Do stuff
-	        	startActivity(new Intent(IsbnActivity.this.getApplicationContext(), ReaderActivity.class));
-	        	finish();
-	        	ret = true;
-	        	break;
-			case R.id.action_info:
-	            //Do stuff
-	            //return true;
-				//actionopen();
-				
-				ret = true;
-				break;
-			default:
-				ret = super.onOptionsItemSelected(item);
-				break;  
-	        }
-	        return ret;
-	    }
-	*/
 	
 	private void searchIsbn() {
 		if (biTask != null && biTask.getStatus() != AsyncTask.Status.FINISHED) {
@@ -248,7 +189,7 @@ public class IsbnActivity extends FragmentActivity {
 	    biTask.execute(isbnET.getText().toString());
 	}
 	
-	@SuppressLint("NewApi")
+	@SuppressLint({ "NewApi", "InflateParams" })
 	private void createCutomActionBarTitle() {
 		ActionBar actionBar = getActionBar();  
 		actionBar.setDisplayShowCustomEnabled(true);
@@ -256,47 +197,19 @@ public class IsbnActivity extends FragmentActivity {
 
         LayoutInflater inflator = LayoutInflater.from(this);
         View v = inflator.inflate(R.layout.isbn_actionbar, null);
-        actionBar.setDisplayShowHomeEnabled(false);
-        
-        /*
-        Typeface tf = Typeface.createFromAsset(getAssets(),"font/fat_tats.ttf");
-        TextView frag1 = (TextView)v.findViewById(R.id.titleFragment1);
-        frag1.setTypeface(tf);
-        TextView frag2 = (TextView)v.findViewById(R.id.titleFragment2);
-        frag2.setTypeface(tf);
-        
-        frag1.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(YourCurrentActivity.this, YourTargetActivity.class));
-                finish();
-            }
-        });
-        frag2.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(YourCurrentActivity.this, YourTargetActivity.class));
-                finish();
-            }
-        });
-        */
+        actionBar.setDisplayShowHomeEnabled(false);        
         
         ImageView home = (ImageView)v.findViewById(R.id.isbn_action_bar_home);
         
         home.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
-            	//int height = getActionBar().getHeight();
-                //Log.d("isbn", "height=" + height);
-            	
-                //startActivity(new Intent(YourCurrentActivity.this, YourTargetActivity.class));
+            public void onClick(View v) {            	
                	startActivity(new Intent(IsbnActivity.this.getApplicationContext(), ReaderActivity.class));
                 overridePendingTransition(R.anim.from_middle, R.anim.to_middle);
                	////overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 	        	finish();                
             }
         });
-
         //assign the view to the actionbar
         actionBar.setCustomView(v);
     }

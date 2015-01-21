@@ -1,7 +1,6 @@
 package jp.co.bookscan.checker;
 
-
-
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -17,12 +16,10 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager.LayoutParams;
 import android.widget.EditText;
-
 
 // acutually singleton
 public class TopActivity extends FragmentActivity {
@@ -51,9 +48,7 @@ public class TopActivity extends FragmentActivity {
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		}
-		setTitle(getResources().getString(R.string.app_name) + "     ver." + versionName);
-		/*ActionBar bar = getActionBar();
-		bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#32bd68")));*/
+		setTitle(getResources().getString(R.string.app_name) + "     ver." + versionName);		
 	}
 	
     public void onPause() {
@@ -116,6 +111,7 @@ public class TopActivity extends FragmentActivity {
     }
 	
 	public static class ISBNDialog extends DialogFragment {  
+		@SuppressLint("InflateParams")
 		@Override  
 		public Dialog onCreateDialog(Bundle state) {  
 			LayoutInflater factory = LayoutInflater.from(getActivity());

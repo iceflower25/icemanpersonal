@@ -7,8 +7,6 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
-import android.util.DisplayMetrics;
-import android.util.Log;
 
 public class SplashActivity extends FragmentActivity {
 	@Override
@@ -24,11 +22,9 @@ public class SplashActivity extends FragmentActivity {
         hdlr.postDelayed(new Runnable() {
         	@Override
         	public void run() {
-        		//startActivity(new Intent(SplashActivity.this, TopActivity.class));
-        		
+        		//startActivity(new Intent(SplashActivity.this, TopActivity.class));        		
         		if (checkNetwork() && checkCamera())
-    			    startActivity(new Intent(SplashActivity.this.getApplicationContext(), ReaderActivity.class));    			    
-        		
+    			    startActivity(new Intent(SplashActivity.this.getApplicationContext(), ReaderActivity.class));
         		finish();
         	}
         }, 800);

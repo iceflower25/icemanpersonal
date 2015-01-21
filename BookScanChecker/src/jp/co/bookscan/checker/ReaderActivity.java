@@ -1,7 +1,5 @@
 package jp.co.bookscan.checker;
 
-
-
 import net.sourceforge.zbar.Config;
 import net.sourceforge.zbar.Image;
 import net.sourceforge.zbar.ImageScanner;
@@ -14,7 +12,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
-import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.hardware.Camera;
@@ -27,16 +24,11 @@ import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-
-
 
 public class ReaderActivity extends FragmentActivity {
     private Camera camera;
@@ -145,7 +137,7 @@ public class ReaderActivity extends FragmentActivity {
         	biTask.cancel(true);
         }
         
-        FrameLayout flPreview = (FrameLayout)findViewById(R.id.cameraPreview);
+        ////FrameLayout flPreview = (FrameLayout)findViewById(R.id.cameraPreview);
         ////flPreview.removeView(ivOverlay);
         ////flPreview.removeView(preview);
         ////ivOverlay.setVisibility(View.GONE);
@@ -186,40 +178,6 @@ public class ReaderActivity extends FragmentActivity {
         	}
        }
     }
-
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu items for use in the action bar
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.readermenu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-    
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-    	int id = item.getItemId();
-    	boolean ret;
-        switch (id) {
-        case android.R.id.home:
-            //Do stuff
-        	startActivity(new Intent(ReaderActivity.this.getApplicationContext(), IsbnActivity.class));
-        	finish();
-        	ret = true;
-        	break;
-		case R.id.action_info:
-            //Do stuff
-            //return true;			
-			showAlertDialog(R.string.appinfo_title, R.string.appinfo_message);
-			ret = true;
-			break;
-		default:
-			ret = super.onOptionsItemSelected(item);
-			break;  
-        }
-        return ret;
-    }
-    */
     
     /** A safe way to get an instance of the Camera object. */
     public static Camera getCameraInstance(){
@@ -315,9 +273,7 @@ public class ReaderActivity extends FragmentActivity {
         Canvas c = new Canvas(bmOverlay);
 
         Paint paint = new Paint();
-        Path path = new Path();
-        PorterDuffXfermode modeSrc = new PorterDuffXfermode(PorterDuff.Mode.SRC);
-        PorterDuffXfermode modeSrcOver = new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER);
+        PorterDuffXfermode modeSrc = new PorterDuffXfermode(PorterDuff.Mode.SRC);        
 
         float wUnit = w / 16;
         float hUnit = h / 24;
@@ -351,44 +307,6 @@ public class ReaderActivity extends FragmentActivity {
         h1 = hUnit * 24;
         ////c.drawRect(0 , h0, wUnit * 16, h1, paint);
         c.drawRect(0 , h0, w, h, paint);
-        
-        /*
-        paint.setXfermode(modeSrcOver);
-
-        paint.setColor(0xffff0000);
-        paint.setStrokeWidth(4);
-        c.drawLine(wUnit * 4, hUnit * 12 - 2, wUnit * 12, hUnit * 12 - 2, paint);
-
-        float d = hUnit * 0.25f;
-        paint.setColor(0xffff7f3f);
-        c.drawRect(wUnit * 3, h0 - d * 2, wUnit * 13, h0 - d, paint);
-        c.drawRect(wUnit * 3, h1 + d, wUnit * 13, h1 + d * 2, paint);
-
-        paint.setStyle(Paint.Style.FILL);
-        path.moveTo(wUnit * 3, h0);
-        path.lineTo(wUnit * 3, h0 - d);
-        path.lineTo(wUnit * 3 + d, h0 - d);
-        path.close();
-        c.drawPath(path,paint);
-
-        path.moveTo(wUnit * 13, h0);
-        path.lineTo(wUnit * 13, h0 - d);
-        path.lineTo(wUnit * 13 - d, h0 - d);
-        path.close();
-        c.drawPath(path,paint);
-
-        path.moveTo(wUnit * 3, h1);
-        path.lineTo(wUnit * 3, h1 + d);
-        path.lineTo(wUnit * 3 + d, h1 + d);
-        path.close();
-        c.drawPath(path,paint);
-
-        path.moveTo(wUnit * 13, h1);
-        path.lineTo(wUnit * 13, h1 + d);
-        path.lineTo(wUnit * 13 - d, h1 + d);
-        path.close();
-        c.drawPath(path,paint);
-        */        
 
         String strMain0 = getResources().getString(R.string.msgtxt_guidemain0);
         String strMain1 = getResources().getString(R.string.msgtxt_guidemain1);
@@ -416,7 +334,7 @@ public class ReaderActivity extends FragmentActivity {
     	.show(getSupportFragmentManager(), "dialog");
     }
     
-    @SuppressLint("NewApi")
+    @SuppressLint({ "NewApi", "InflateParams" })
 	private void createCutomActionBarTitle() {
 		ActionBar actionBar = getActionBar();  
 		actionBar.setDisplayShowCustomEnabled(true);
@@ -425,31 +343,6 @@ public class ReaderActivity extends FragmentActivity {
         LayoutInflater inflator = LayoutInflater.from(this);
         View v = inflator.inflate(R.layout.reader_actionbar, null);
         actionBar.setDisplayShowHomeEnabled(false);
-                
-        
-        
-        /*
-        Typeface tf = Typeface.createFromAsset(getAssets(),"font/fat_tats.ttf");
-        TextView frag1 = (TextView)v.findViewById(R.id.titleFragment1);
-        frag1.setTypeface(tf);
-        TextView frag2 = (TextView)v.findViewById(R.id.titleFragment2);
-        frag2.setTypeface(tf);
-        
-        frag1.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(YourCurrentActivity.this, YourTargetActivity.class));
-                finish();
-            }
-        });
-        frag2.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(YourCurrentActivity.this, YourTargetActivity.class));
-                finish();
-            }
-        });
-        */
         
         ImageView home = (ImageView)v.findViewById(R.id.reader_action_bar_home);
         ImageView info = (ImageView)v.findViewById(R.id.reader_action_bar_info);
@@ -457,7 +350,6 @@ public class ReaderActivity extends FragmentActivity {
         home.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(YourCurrentActivity.this, YourTargetActivity.class));
                	startActivity(new Intent(ReaderActivity.this.getApplicationContext(), IsbnActivity.class));
                	overridePendingTransition(R.anim.from_middle, R.anim.to_middle);
                	////overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -465,10 +357,9 @@ public class ReaderActivity extends FragmentActivity {
             }
         });
         
-        info.setOnClickListener(new OnClickListener() {
+        info.setOnClickListener(new OnClickListener() {  
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(YourCurrentActivity.this, YourTargetActivity.class));
             	showAlertDialog(R.string.appinfo_title, R.string.appinfo_message);              
             }
         });
