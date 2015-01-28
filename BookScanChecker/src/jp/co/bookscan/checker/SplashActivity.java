@@ -7,6 +7,8 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
+import android.util.DisplayMetrics;
+import android.util.Log;
 
 public class SplashActivity extends FragmentActivity {
 	@Override
@@ -16,8 +18,7 @@ public class SplashActivity extends FragmentActivity {
 		setContentView(R.layout.splash);
 		
 		//DisplayMetrics dm1 = getResources().getDisplayMetrics();
-		//Log.d("test", dm1.densityDpi+"");
-
+		//Log.d("screen  ", "dpi:" + dm1.densityDpi + ",height:" + dm1.heightPixels + ",width:" + dm1.widthPixels);
         Handler hdlr = new Handler();
         hdlr.postDelayed(new Runnable() {
         	@Override
@@ -25,7 +26,11 @@ public class SplashActivity extends FragmentActivity {
         		//startActivity(new Intent(SplashActivity.this, TopActivity.class));        		
         		if (checkNetwork() && checkCamera())
     			    startActivity(new Intent(SplashActivity.this.getApplicationContext(), ReaderActivity.class));
+        		finish();        		
+        		/* デバッグのため
+        		startActivity(new Intent(SplashActivity.this.getApplicationContext(), IsbnActivity.class));
         		finish();
+        		*/
         	}
         }, 800);
 	}

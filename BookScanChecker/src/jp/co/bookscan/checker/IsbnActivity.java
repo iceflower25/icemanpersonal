@@ -2,10 +2,13 @@ package jp.co.bookscan.checker;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -76,6 +79,26 @@ public class IsbnActivity extends FragmentActivity {
         searchButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
             	searchIsbn();
+            	
+            	/*デバッグのため(スクリーンのサーズ)	
+            	DisplayMetrics dm1 = getResources().getDisplayMetrics();
+            	String screenSizeStr = "dpi:" + dm1.densityDpi + ",height:" + dm1.heightPixels + ",width:" + dm1.widthPixels;
+    	        	
+                AlertDialog alertDialog = new AlertDialog.Builder(
+                			IsbnActivity.this).create();
+     
+    	        // Setting Dialog Title
+    	        alertDialog.setTitle("Alert Dialog");
+    	 
+    	        // Setting Dialog Message
+    	        alertDialog.setMessage(screenSizeStr);
+    	 
+    	        // Setting Icon to Dialog
+    	        ////alertDialog.setIcon(R.drawable.tick);
+    	 
+    	        // Showing Alert Message
+    	        alertDialog.show();
+    	        */
             }
         });
         
@@ -173,8 +196,8 @@ public class IsbnActivity extends FragmentActivity {
             }
         });
         
-        enterTV.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
+        enterTV.setOnClickListener(new OnClickListener() {            
+			public void onClick(View v) {
             	searchIsbn();
             }
         });
