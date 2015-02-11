@@ -45,7 +45,7 @@ public class ReaderActivity extends FragmentActivity {
     boolean isPaused = false;
 
     private boolean previewing = true;
-    private boolean hasFocus = false;
+    private boolean hasFocus = false;    
     
     static {
         System.loadLibrary("iconv");
@@ -127,9 +127,7 @@ public class ReaderActivity extends FragmentActivity {
 		}
     }
 
-
     public void onPause() {
-
     	isPaused = true;
     	
         super.onPause();
@@ -137,18 +135,31 @@ public class ReaderActivity extends FragmentActivity {
         	biTask.cancel(true);
         }
         
-        ////FrameLayout flPreview = (FrameLayout)findViewById(R.id.cameraPreview);
-        ////flPreview.removeView(ivOverlay);
-        ////flPreview.removeView(preview);
-        ////ivOverlay.setVisibility(View.GONE);
+        FrameLayout flPreview = (FrameLayout)findViewById(R.id.cameraPreview);
+        flPreview.removeView(preview);
+        
+        preview.stopPreview(); //neccessary?   ???        
+        autoFocusHandler.removeCallbacks(doAutoFocus);
+        preview = null;
+        releaseCamera();
+        
+        /*
+        FrameLayout flPreview = (FrameLayout)findViewById(R.id.cameraPreview);
+        flPreview.removeView(ivOverlay);
+        flPreview.removeView(preview);
+        ivOverlay.setVisibility(View.GONE);        
+        
         preview.stopPreview(); //neccessary?   ???
         autoFocusHandler.removeCallbacks(doAutoFocus);
         preview = null;
         releaseCamera();
+        */
+                
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume() {    	
+    	
     	if (isPaused) isPaused = false;
     	
         super.onResume();
@@ -177,8 +188,23 @@ public class ReaderActivity extends FragmentActivity {
             	ivOverlay.setVisibility(View.GONE);
         	}
        }
-    }
+    }    
     
+    @Override
+    protected void onStop() {
+    	super.onStop();    	
+    	    	    	
+    	FrameLayout flPreview = (FrameLayout)findViewById(R.id.cameraPreview);
+        flPreview.removeView(ivOverlay);
+        ////flPreview.removeView(preview);
+        ivOverlay.setVisibility(View.GONE);        
+        
+        ////preview.stopPreview(); //neccessary?   ???
+        ////autoFocusHandler.removeCallbacks(doAutoFocus);
+        ////preview = null;
+        ////releaseCamera();                    	
+    }
+     
     /** A safe way to get an instance of the Camera object. */
     public static Camera getCameraInstance(){
         Camera c = null;
