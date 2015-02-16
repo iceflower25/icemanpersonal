@@ -27,10 +27,9 @@ public class SplashActivity extends FragmentActivity {
         		if (checkNetwork() && checkCamera())
     			    startActivity(new Intent(SplashActivity.this.getApplicationContext(), ReaderActivity.class));
         		finish();        		
-        		/* デバッグのため
-        		startActivity(new Intent(SplashActivity.this.getApplicationContext(), IsbnActivity.class));
-        		finish();
-        		*/
+        		// デバッグのため
+        		////startActivity(new Intent(SplashActivity.this.getApplicationContext(), IsbnActivity.class));
+        		////finish();        		
         	}
         }, 800);
 	}

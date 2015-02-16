@@ -195,14 +195,8 @@ public class ReaderActivity extends FragmentActivity {
     	super.onStop();    	
     	    	    	
     	FrameLayout flPreview = (FrameLayout)findViewById(R.id.cameraPreview);
-        flPreview.removeView(ivOverlay);
-        ////flPreview.removeView(preview);
-        ivOverlay.setVisibility(View.GONE);        
-        
-        ////preview.stopPreview(); //neccessary?   ???
-        ////autoFocusHandler.removeCallbacks(doAutoFocus);
-        ////preview = null;
-        ////releaseCamera();                    	
+        flPreview.removeView(ivOverlay);        
+        ivOverlay.setVisibility(View.GONE);                    	
     }
      
     /** A safe way to get an instance of the Camera object. */
