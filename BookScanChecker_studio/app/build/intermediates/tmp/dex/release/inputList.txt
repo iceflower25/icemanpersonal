@@ -1,0 +1,3 @@
+D:\james\BookScanChecker_studio\app\build\intermediates\classes\release
+D:\james\BookScanChecker_studio\app\build\intermediates\pre-dexed\release\zbar-5b2676ad8a29c3f27e13c27067d779fda1deff04.jar
+D:\james\BookScanChecker_studio\app\build\intermediates\pre-dexed\release\support-v4-18.0.0-86678709fbb955eac2afd7d8921dbde56d8b060f.jar

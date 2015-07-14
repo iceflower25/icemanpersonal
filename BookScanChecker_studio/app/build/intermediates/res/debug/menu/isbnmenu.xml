@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+        <!-- Search, should appear as action button -->   
+</menu>
+<!-- From: file:/D:/james/BookScanChecker_studio/app/src/main/res/menu/isbnmenu.xml -->

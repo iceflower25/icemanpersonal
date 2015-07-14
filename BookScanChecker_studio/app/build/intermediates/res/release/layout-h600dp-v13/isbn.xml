@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" > 
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:gravity="center"                
+        android:orientation="vertical">    
+<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:background="#ffffff"                
+        android:orientation="vertical">
+        <TextView
+             android:text="@+string/isbn_num1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="20dp"
+             android:textSize="26sp"             
+             android:gravity="right"
+             android:background="@drawable/back">
+        </TextView>
+        <TextView
+             android:text="@+string/isbn_num2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="3dp"
+             android:layout_marginBottom="3dp"
+             android:textSize="26sp"             
+             android:gravity="right">
+        </TextView>      
+<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:color="#ffffff">
+        <TextView
+             android:text="@+string/isbn_str1_1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="5dp"
+             android:textSize="20sp"             
+             android:gravity="right">
+        </TextView>
+        <TextView
+             android:text="@+string/isbn_str1_2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="5dp"
+             android:textSize="20sp"
+             android:textColor="#ff0000"
+             android:gravity="right">
+        </TextView>
+        <TextView
+             android:text="@+string/isbn_str1_3"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="5dp"
+             android:textSize="20sp"             
+             android:gravity="right">
+        </TextView>
+</LinearLayout>
+        <TextView
+             android:text="@+string/isbn_str2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="3dp"
+             android:textSize="20sp"             
+             android:gravity="right">
+        </TextView>
+</LinearLayout>
+</LinearLayout>
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="#444444"
+        android:gravity="center"
+        android:orientation="vertical">
+        <EditText
+	        android:id="@+id/isbn_edittext"
+	        android:background="@drawable/backgroundshape"
+	        android:layout_height="wrap_content"  android:layout_width="match_parent"
+	        android:layout_marginLeft="20dp"     android:layout_marginRight="20dp"
+	        android:layout_marginTop="20dp"
+	        android:layout_marginBottom="10dp"
+	        android:paddingTop="3dp"
+	        android:paddingBottom="3dp"
+	        android:paddingLeft="50dp"
+	        android:paddingRight="20dp"
+	        android:scrollHorizontally="true"
+	        android:inputType="number"	        
+	        android:gravity="fill_horizontal"
+	        android:drawableRight="@drawable/mushi"	        
+	        android:textSize="25sp"/>
+        <Button
+            android:id="@+id/search_button"
+    		android:layout_width="wrap_content"
+    		android:layout_height="50dp"
+    		android:layout_marginTop="5dp"
+    		android:layout_marginBottom="20dp"    		
+    		android:background="@drawable/button"    		    		
+    		android:onClick="buttonclick"
+		/>
+</LinearLayout>
+
+<TableLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent" >
+ 
+<TableRow
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_weight="1"
+android:background="#dcdcdc" >
+ 
+<TextView
+android:id="@+id/num1_button"    
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:layout_marginBottom="1px"
+android:layout_marginRight="1px"
+android:layout_weight="1"
+android:background="#FFFFFF"
+android:gravity="center"
+android:textSize="30sp"
+android:clickable="true"
+android:text="@string/num1" >
+</TextView>
+ 
+<TextView
+android:id="@+id/num2_button"    
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:layout_marginBottom="1px"
+android:layout_marginRight="1px"
+android:layout_weight="1"
+android:background="#FFFFFF"
+android:gravity="center"
+android:textSize="30sp"
+android:clickable="true"
+android:text="@string/num2" >
+</TextView>
+ 
+<TextView
+android:id="@+id/num3_button"    
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:layout_marginBottom="1px"
+android:layout_weight="1"
+android:background="#FFFFFF"
+android:gravity="center"
+android:textSize="30sp"
+android:clickable="true"
+android:text="@string/num3" >
+</TextView>
+</TableRow>
+ 
+<TableRow
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_weight="1"
+android:background="#dcdcdc">
+ 
+<TextView
+android:id="@+id/num4_button"    
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:layout_marginBottom="1px"
+android:layout_marginRight="1px"
+android:layout_weight="1"
+android:background="#FFFFFF"
+android:gravity="center"
+android:textSize="30sp"
+android:clickable="true"
+android:text="@string/num4">
+</TextView>
+ 
+<TextView
+android:id="@+id/num5_button"    
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:layout_marginBottom="1px"
+android:layout_marginRight="1px"
+android:layout_weight="1"
+android:background="#FFFFFF"
+android:gravity="center"
+android:textSize="30sp"
+android:clickable="true"
+android:text="@string/num5">
+</TextView>
+ 
+<TextView
+android:id="@+id/num6_button"    
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:layout_marginBottom="1px"
+android:layout_weight="1"
+android:background="#FFFFFF"
+android:gravity="center"
+android:textSize="30sp"
+android:clickable="true"
+android:text="@string/num6" >
+</TextView>
+</TableRow>
+
+<TableRow
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_weight="1"
+android:background="#dcdcdc">
+ 
+<TextView
+android:id="@+id/num7_button"
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:layout_marginBottom="1px"
+android:layout_marginRight="1px"
+android:layout_weight="1"
+android:background="#FFFFFF"
+android:gravity="center"
+android:textSize="30sp"
+android:clickable="true"
+android:text="@string/num7">
+</TextView>
+ 
+<TextView
+android:id="@+id/num8_button"    
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:layout_marginBottom="1px"
+android:layout_marginRight="1px"
+android:layout_weight="1"
+android:background="#FFFFFF"
+android:gravity="center"
+android:textSize="30sp"
+android:clickable="true"
+android:text="@string/num8">
+</TextView>
+ 
+<TextView
+android:id="@+id/num9_button"    
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:layout_marginBottom="1px"
+android:layout_weight="1"
+android:background="#FFFFFF"
+android:gravity="center"
+android:textSize="30sp"
+android:clickable="true"
+android:text="@string/num9" >
+</TextView>
+</TableRow>
+
+<TableRow
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_weight="1"
+android:background="#b4b5b6">
+ 
+<TextView
+android:id="@+id/del_button"    
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:layout_marginRight="1px"
+android:layout_weight="1"
+android:background="@drawable/delbutton_small"
+android:gravity="center"
+android:textSize="30sp"
+android:clickable="true">
+</TextView>
+ 
+<TextView
+android:id="@+id/num0_button"    
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:layout_marginRight="1px"
+android:layout_weight="1"
+android:background="#FFFFFF"
+android:gravity="center"
+android:textSize="30sp"
+android:clickable="true"
+android:text="@string/num0">
+</TextView>
+ 
+<TextView
+android:id="@+id/enter_button"    
+android:layout_width="0dp"
+android:layout_height="match_parent"
+android:layout_weight="1"
+android:background="#93a9e6"
+android:gravity="center"
+android:textSize="26sp"
+android:textColor="#ffffff"
+android:clickable="true"
+android:text="@string/enter" >
+</TextView>
+</TableRow>
+</TableLayout>
+</LinearLayout><!-- From: file:/D:/james/BookScanChecker_studio/app/src/main/res/layout-h600dp/isbn.xml -->

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:scaleType="fitCenter"
+    android:background="@drawable/bg"
+    android:gravity="top|center_horizontal"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="127.5dp">
+        
+    </View>
+
+        
+    <ImageButton
+        android:contentDescription="@+string/btn_reader"
+        android:id="@+id/btn_reader"
+        android:layout_width="435dp"
+        android:layout_height="135dp"
+        android:background="@null"
+        android:onClick="menuListener"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/btn_reader" />
+    
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+        
+    </View>
+
+    <ImageButton
+        android:contentDescription="@+string/btn_isbn"
+        android:id="@+id/btn_isbn"
+        android:layout_width="435dp"
+        android:layout_height="111dp"
+        android:background="@null"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:onClick="menuListener"
+        android:src="@drawable/btn_isbn" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp">
+        
+    </View>
+
+    <ImageButton
+        android:contentDescription="@+string/btn_appinfo"
+        android:id="@+id/btn_app_info"
+        android:layout_width="435dp"
+        android:layout_height="111dp"
+        android:background="@null"
+        android:padding="0dp"
+	    android:scaleType="fitCenter"
+	    android:onClick="menuListener"
+        android:src="@drawable/btn_appinfo" />
+
+</LinearLayout>
+<!-- From: file:/D:/james/BookScanChecker_studio/app/src/main/res/layout-large/main.xml -->
