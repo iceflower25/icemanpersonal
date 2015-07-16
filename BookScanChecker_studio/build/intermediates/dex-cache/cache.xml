@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
+        jar="D:\james\checker_for_android\BookScanChecker_studio\app\libs\zbar.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7bbdf7ba57a8a157c0cad51e455609c70887812e">
+        <dex dex="D:\james\checker_for_android\BookScanChecker_studio\app\build\intermediates\pre-dexed\debug\zbar-9c3767e9116982a298e89490b09de9ba54b429fc.jar" />
+    </item>
+    <item
         jar="D:\AndroidStudioSdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
-        <dex dex="D:\james\checker_for_android_studio\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0-86678709fbb955eac2afd7d8921dbde56d8b060f.jar" />
-    </item>
-    <item
-        jar="D:\james\checker_for_android_studio\app\libs\zbar.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="7bbdf7ba57a8a157c0cad51e455609c70887812e">
-        <dex dex="D:\james\checker_for_android_studio\app\build\intermediates\pre-dexed\debug\zbar-547e9c203cf68afb84805b2fcb78188805dc5f11.jar" />
+        <dex dex="D:\james\checker_for_android\BookScanChecker_studio\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0-86678709fbb955eac2afd7d8921dbde56d8b060f.jar" />
     </item>
     <item
         jar="D:\james\BookScanChecker_studio\app\libs\zbar.jar"

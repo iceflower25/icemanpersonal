@@ -14,4 +14,4 @@
         android:layout_marginLeft="20dp"
         android:src="@drawable/camera"
         />
-</RelativeLayout><!-- From: file:/D:/james/BookScanChecker_studio/app/src/main/res/layout-h600dp/isbn_actionbar.xml -->
+</RelativeLayout><!-- From: file:/D:/james/checker_for_android/BookScanChecker_studio/app/src/main/res/layout-h600dp/isbn_actionbar.xml -->

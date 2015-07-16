@@ -299,4 +299,4 @@ android:text="@string/enter" >
 </TextView>
 </TableRow>
 </TableLayout>
-</LinearLayout><!-- From: file:/D:/james/BookScanChecker_studio/app/src/main/res/layout-h560dp/isbn.xml -->
+</LinearLayout><!-- From: file:/D:/james/checker_for_android/BookScanChecker_studio/app/src/main/res/layout-h560dp/isbn.xml -->

@@ -60,8 +60,8 @@ class BookInfoTask extends AsyncTask<String, Void, Integer> {
     private static final int RESULT_JSON_ERROR = 2;
     private static final int RESULT_ISBN_ERROR = 3;
 
-    private static final int oneBook = 350; // 1冊目ページ数
-    private static final int extraBook = 200; // 追加冊ページ数
+    private final int oneBook = 350; // 1冊目ページ数
+    private final int extraBook = 200; // 追加冊ページ数
     
     public BookInfoTask(FragmentActivity activity) {
         this.activity = activity;

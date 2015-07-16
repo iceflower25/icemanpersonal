@@ -5,4 +5,4 @@
           android:icon="@drawable/icon_info"
           android:title="@string/action_info"          
           android:showAsAction="ifRoom" />
-</menu><!-- From: file:/D:/james/BookScanChecker_studio/app/src/main/res/menu/readermenu.xml -->
+</menu><!-- From: file:/D:/james/checker_for_android/BookScanChecker_studio/app/src/main/res/menu/readermenu.xml -->
