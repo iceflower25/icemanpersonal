@@ -19,28 +19,37 @@ public class SplashActivity extends FragmentActivity {
 		
 		//DisplayMetrics dm1 = getResources().getDisplayMetrics();
 		//Log.d("screen  ", "dpi:" + dm1.densityDpi + ",height:" + dm1.heightPixels + ",width:" + dm1.widthPixels);
+
+
         Handler hdlr = new Handler();
         hdlr.postDelayed(new Runnable() {
         	@Override
         	public void run() {
-        		//startActivity(new Intent(SplashActivity.this, TopActivity.class));        		
-        		if (checkNetwork() && checkCamera())
-    			    startActivity(new Intent(SplashActivity.this.getApplicationContext(), ReaderActivity.class));
-        		finish();        		
-        		// ƒfƒoƒbƒO‚Ì‚½‚ß
+        		//startActivity(new Intent(SplashActivity.this, TopActivity.class));
+        		if (checkNetwork() && checkCamera()) {
+					startActivity(new Intent(SplashActivity.this.getApplicationContext(), ReaderActivity.class));
+					finish();
+				}
+        		// ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ï¿½
         		////startActivity(new Intent(SplashActivity.this.getApplicationContext(), IsbnActivity.class));
-        		////finish();        		
+        		////finish();
         	}
         }, 800);
 	}
 	
 	private boolean checkCamera() {
+		Log.e("cleverman","checkCamera : before");
 		Camera c = ReaderActivity.getCameraInstance();
+		Log.e("cleverman","checkCamera : after");
 		if (c == null) {
-    		showAlertDialog(R.string.title_alert, R.string.camera_notfound);
+			Log.e("cleverman", "checkCamera : null");
+//    		showAlertDialog(R.string.title_alert, R.string.camera_notfound);
 			return false;
 		} else {
+			Log.e("cleverman","checkCamera : true");
+
 			c.release();
+
 			return true;
 		}
 	}

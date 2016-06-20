@@ -60,8 +60,8 @@ class BookInfoTask extends AsyncTask<String, Void, Integer> {
     private static final int RESULT_JSON_ERROR = 2;
     private static final int RESULT_ISBN_ERROR = 3;
 
-    private final int oneBook = 350; // 1冊目ページ数
-    private final int extraBook = 200; // 追加冊ページ数
+    private final int oneBook = 350; //
+    private final int extraBook = 200; //
     
     public BookInfoTask(FragmentActivity activity) {
         this.activity = activity;
@@ -70,8 +70,10 @@ class BookInfoTask extends AsyncTask<String, Void, Integer> {
     @Override
     protected Integer doInBackground(String... params) {
         strISBN = params[0];
+
         if (checkISBN(strISBN) == false)
             return RESULT_ISBN_ERROR;
+
         try {
             parseInfo(serverQuery(strISBN));
         } catch (NetworkErrorException e) {
@@ -84,7 +86,14 @@ class BookInfoTask extends AsyncTask<String, Void, Integer> {
     }
 
     private boolean checkISBN(String str) {
-        if (str.length() != 13) return false;
+
+        if (str.length() == 10) {
+            return checkISBN_10(str);
+        }
+
+        if (str.length() != 13) {
+            return false;
+        }
         if (!str.substring(0,3).equals("978"))
             return false;
         int sum = 0;
@@ -93,9 +102,46 @@ class BookInfoTask extends AsyncTask<String, Void, Integer> {
             v[i] = Character.digit(str.charAt(i), 10);
         for (int i = 0; i < 12; i += 2)
             sum += v[i] + v[i+1] * 3;
+
+        Log.e("cleverman","sum: " + sum);
+
         if ((v[12] + sum) % 10 == 0)
             return true;
         return false;
+    }
+
+    private boolean checkISBN_10(String str) {
+        if (str.length() != 10) return false;
+
+        int sum = 0;
+        int[] v = new int[10];
+        for (int i = 0; i < 10; i++)
+            v[i] = Character.digit(str.charAt(i), 10);
+
+
+        int i, s = 0, t = 0;
+
+        for (i = 0; i < 10; i++) {
+            t += v[i];
+            s += t;
+        }
+
+        Log.e("cleverman","sum_10: " + s);
+
+        if (s%11 == 0) return true;
+
+        return false;
+
+//        for (int i = 0; i < 9; i += 2)
+//            sum += v[i] + v[i+1] * 3;
+//
+//
+//
+//        Log.e("cleverman","sum_10: " + sum);
+//
+//        if ((v[9] + sum) % 10 == 0)
+//            return true;
+//        return false;
     }
 
     @Override

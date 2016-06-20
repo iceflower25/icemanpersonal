@@ -62,7 +62,7 @@ public class ReaderActivity extends FragmentActivity {
 
         setContentView(R.layout.reader);
         
-        /*ActionBar‚Ì¶‚ÌƒAƒCƒRƒ“‚ªƒNƒŠƒbƒN‚Å‚«‚é‚½‚ß’Ç‰Á*/        
+        /*ActionBarï¿½Ìï¿½ï¿½ÌƒAï¿½Cï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½Nï¿½Å‚ï¿½ï¿½é‚½ï¿½ß’Ç‰ï¿½*/        
         if(android.os.Build.VERSION.SDK_INT >= 14) {
         	getActionBar().setHomeButtonEnabled(true);
         }
@@ -203,7 +203,7 @@ public class ReaderActivity extends FragmentActivity {
     public static Camera getCameraInstance(){
         Camera c = null;
         try {
-            c = Camera.open(); //get the first back-facing camera
+            c = Camera.open(0); //get the first back-facing camera
             if (c == null) { //no back-facing camera
                 //c = Camera.open(0);
             	return null;
@@ -301,7 +301,7 @@ public class ReaderActivity extends FragmentActivity {
         //c.drawColor(0x9f000000);
         c.drawColor(0x99444444);        
         
-        //ƒgƒbƒv•s“§–¾ƒGƒŠƒA
+        //ï¿½gï¿½bï¿½vï¿½sï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½A
         paint.setXfermode(modeSrc);
         paint.setColor(0xff444444);
 
@@ -310,7 +310,7 @@ public class ReaderActivity extends FragmentActivity {
         ////c.drawRect(0 , h0, wUnit * 16, h1, paint);
         c.drawRect(0 , h0, w, h1, paint);
         
-        //“§–¾ƒGƒŠƒA
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½A
         paint.setXfermode(modeSrc);
         paint.setColor(0);
 
@@ -319,7 +319,7 @@ public class ReaderActivity extends FragmentActivity {
         ////c.drawRect(0 , h0, wUnit * 16, h1, paint);
         c.drawRect(0 , h0, w, h1, paint);
         
-        //ƒ{ƒgƒ€•s“§–¾ƒGƒŠƒA
+        //ï¿½{ï¿½gï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½A
         paint.setXfermode(modeSrc);
         paint.setColor(0xff444444);
 
@@ -370,7 +370,8 @@ public class ReaderActivity extends FragmentActivity {
         home.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-               	startActivity(new Intent(ReaderActivity.this.getApplicationContext(), IsbnActivity.class));
+               	//startActivity(new Intent(ReaderActivity.this.getApplicationContext(), IsbnActivity.class));
+                startActivity(new Intent(ReaderActivity.this.getApplicationContext(), ISBNTabActivity.class));
                	overridePendingTransition(R.anim.from_middle, R.anim.to_middle);
                	////overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 	        	finish();	    
