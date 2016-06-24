@@ -11,13 +11,16 @@
         android:gravity="center"                
         android:orientation="vertical">    
 <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="240dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+
+    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="#ffffff"                
         android:orientation="vertical">
         <TextView
             android:visibility="gone"
-             android:text="@+string/isbn_num1"
+             android:text="@string/isbn_num1"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_marginTop="30dp"
@@ -40,7 +43,7 @@
         android:layout_height="wrap_content"
         android:color="#ffffff">
         <TextView
-             android:text="@+string/isbn_str1_1"
+             android:text="@string/isbn_str1_1"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_marginTop="5dp"
@@ -48,7 +51,7 @@
              android:gravity="right">
         </TextView>
         <TextView
-             android:text="@+string/isbn_str1_2"
+             android:text="@string/isbn_str1_2"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_marginTop="5dp"
@@ -57,7 +60,7 @@
              android:gravity="right">
         </TextView>
         <TextView
-             android:text="@+string/isbn_str1_3"
+             android:text="@string/isbn_str1_3"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_marginTop="5dp"
@@ -66,7 +69,7 @@
         </TextView>
 </LinearLayout>
         <TextView
-             android:text="@+string/isbn_str2"
+             android:text="@string/isbn_str2"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_marginTop="5dp"
@@ -95,7 +98,8 @@
 	        android:scrollHorizontally="true"
 	        android:inputType="number"	        
 	        android:gravity="fill_horizontal"
-	        android:drawableRight="@drawable/mushi"	        
+	        android:drawableRight="@drawable/mushi"
+            android:maxLength="13"
 	        android:textSize="30sp"/>
         <Button
             android:id="@+id/search_button"

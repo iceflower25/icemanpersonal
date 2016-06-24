@@ -57,6 +57,7 @@ public class IsbnActivity extends FragmentActivity {
         isbnET = (EditText)findViewById(R.id.isbn_edittext);
         isbnET.setText(isbnStr);
         isbnET.setSelection(ISBN_HEADER_NUM);
+
                 	
         Button searchButton = (Button)findViewById(R.id.search_button);
         TextView num0TV = (TextView)findViewById(R.id.num0_button);
@@ -80,10 +81,10 @@ public class IsbnActivity extends FragmentActivity {
                 if(event.getAction() == MotionEvent.ACTION_UP) {
                     if(event.getRawX() >= (isbnET.getRight() - isbnET.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width() - isbnET.getPaddingRight()) ) {
                      searchIsbn();
-                     return true;
+                     return false;
                     }
                 }
-                return true;
+                return false;
             }
         });
         

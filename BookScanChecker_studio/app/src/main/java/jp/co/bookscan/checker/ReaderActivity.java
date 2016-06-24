@@ -205,8 +205,8 @@ public class ReaderActivity extends FragmentActivity {
         try {
             c = Camera.open(0); //get the first back-facing camera
             if (c == null) { //no back-facing camera
-                //c = Camera.open(0);
-            	return null;
+                c = Camera.open(1);
+                if (c == null)	return null;
             }
         } catch (Exception e){
             Log.d("Checker#getCameraInstance()", e.getMessage());

@@ -26,6 +26,9 @@ public class SplashActivity extends FragmentActivity {
         	@Override
         	public void run() {
         		//startActivity(new Intent(SplashActivity.this, TopActivity.class));
+				startActivity(new Intent(SplashActivity.this.getApplicationContext(), ISBNTabActivity.class));
+				finish();
+
         		if (checkNetwork() && checkCamera()) {
 					startActivity(new Intent(SplashActivity.this.getApplicationContext(), ReaderActivity.class));
 					finish();

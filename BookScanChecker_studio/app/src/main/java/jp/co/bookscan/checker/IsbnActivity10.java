@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -26,20 +27,15 @@ public class IsbnActivity10 extends FragmentActivity {
     private EditText isbnET;
     private IsbnActivity10 activity;
     private static BookInfoTask biTask = null;
-    private final String ISBN_HEADER = "";
     private final int ISBN_HEADER_NUM = 0;     /*ISBN�ԍ��̓��̌���*/
-    private final int ISBN_MAX_NUM = 10;       /*ISBN�ԍ��͓������ȊO�A�ő���͂ł��錅���B*/
-    private int isbnNum= 0;    /*���͂��ꂽISBN����(���ȊO)*/
     private final ForegroundColorSpan isbnHeaderColor = new ForegroundColorSpan(Color.GRAY);   /*ISBN�ԍ��̓�3���̐F*/
+
+    private TextView textLabel;
 
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle state) {
         super.onCreate(state);
-
-        getWindow().setSoftInputMode(LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        final SpannableStringBuilder isbnStr = new SpannableStringBuilder(ISBN_HEADER);   /*ISBN�ԍ��̓���3��*/
-        isbnStr.setSpan(isbnHeaderColor, 0, ISBN_HEADER_NUM, Spannable.SPAN_INCLUSIVE_INCLUSIVE);   /*ISBN�ԍ��̓���3���̐F��ݒ�*/
 
         setContentView(R.layout.activity_isbn10);
 
@@ -55,171 +51,42 @@ public class IsbnActivity10 extends FragmentActivity {
 //        }
 
         isbnET = (EditText)findViewById(R.id.isbn_edittext);
-        isbnET.setText(isbnStr);
-        isbnET.setSelection(ISBN_HEADER_NUM);
 
         Button searchButton = (Button)findViewById(R.id.search_button);
-        TextView num0TV = (TextView)findViewById(R.id.num0_button);
-        TextView num1TV = (TextView)findViewById(R.id.num1_button);
-        TextView num2TV = (TextView)findViewById(R.id.num2_button);
-        TextView num3TV = (TextView)findViewById(R.id.num3_button);
-        TextView num4TV = (TextView)findViewById(R.id.num4_button);
-        TextView num5TV = (TextView)findViewById(R.id.num5_button);
-        TextView num6TV = (TextView)findViewById(R.id.num6_button);
-        TextView num7TV = (TextView)findViewById(R.id.num7_button);
-        TextView num8TV = (TextView)findViewById(R.id.num8_button);
-        TextView num9TV = (TextView)findViewById(R.id.num9_button);
-        TextView delTV = (TextView)findViewById(R.id.del_button);
-        TextView enterTV = (TextView)findViewById(R.id.enter_button);
+
+        textLabel = (TextView) findViewById(R.id.textLabel);
+
+        String str1 = getResources().getString(R.string.isbn_str1_1);
+        String str2 = getResources().getString(R.string.isbn_str1_2);
+        String str3 = getResources().getString(R.string.isbn_str1_3);
+
+
+        String str = "<html>" + str1 + "<font color='red'>" + str2 + "</font>"  + str3 + "</html>";
+        textLabel.setText(Html.fromHtml(str));
 
         isbnET.setOnTouchListener(new OnTouchListener() {
             @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 final int DRAWABLE_RIGHT = 2;
-                if(event.getAction() == MotionEvent.ACTION_UP) {
-                    if(event.getRawX() >= (isbnET.getRight() - isbnET.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width() - isbnET.getPaddingRight()) ) {
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (event.getRawX() >= (isbnET.getRight() - isbnET.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width() - isbnET.getPaddingRight())) {
                         searchIsbn();
-                        return true;
+                        return false;
                     }
                 }
-                return true;
+                return false;
             }
         });
 
         searchButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 searchIsbn();
-            	
-            	/*�f�o�b�O�̂���(�X�N���[���̃T�[�Y)	
-            	DisplayMetrics dm1 = getResources().getDisplayMetrics();
-            	String screenSizeStr = "dpi:" + dm1.densityDpi + ",height:" + dm1.heightPixels + ",width:" + dm1.widthPixels;
-    	        	
-                AlertDialog alertDialog = new AlertDialog.Builder(
-                			IsbnActivity.this).create();
-     
-    	        // Setting Dialog Title
-    	        alertDialog.setTitle("Alert Dialog");
-    	 
-    	        // Setting Dialog Message
-    	        alertDialog.setMessage(screenSizeStr);
-    	 
-    	        // Setting Icon to Dialog
-    	        ////alertDialog.setIcon(R.drawable.tick);
-    	 
-    	        // Showing Alert Message
-    	        alertDialog.show();
-    	        */
             }
         });
 
-        /** "0"�{�^���@ */
-        num0TV.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                inputNum("0");
-            }
-        });
-
-        /** "1"�{�^���@ */
-        num1TV.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                inputNum("1");
-            }
-        });
-
-        /** "2"�{�^���@ */
-        num2TV.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                inputNum("2");
-            }
-        });
-
-        /** "3"�{�^���@ */
-        num3TV.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                inputNum("3");
-            }
-        });
-
-        /** "4"�{�^���@ */
-        num4TV.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                inputNum("4");
-            }
-        });
-
-        /** "5"�{�^���@ */
-        num5TV.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                inputNum("5");
-            }
-        });
-
-        /** "6"�{�^���@ */
-        num6TV.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                inputNum("6");
-            }
-        });
-
-        /** "7"�{�^���@ */
-        num7TV.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                inputNum("7");
-            }
-        });
-
-        /** "8"�{�^���@ */
-        num8TV.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                inputNum("8");
-            }
-        });
-
-        /** "9"�{�^���@ */
-        num9TV.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                inputNum("9");
-            }
-        });
-
-        delTV.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                final SpannableStringBuilder isbnStr;
-                String curStr;    // ���͂��ꂽ����
-                int curPos;
-                curStr = isbnET.getText().toString();
-                if( curStr.length() > 3 ) {
-                    curPos = isbnET.getSelectionStart();   // cursor�ʒu���Q�b�g
-                    curStr = curStr.substring(0, curStr.length()-1);  //�Ō�̌����폜
-                    isbnStr = new SpannableStringBuilder(curStr);   // ISBN�ԍ�
-                    isbnStr.setSpan(isbnHeaderColor, 0, ISBN_HEADER_NUM, Spannable.SPAN_INCLUSIVE_INCLUSIVE);   // ISBN�ԍ��̓���3���̐F��ݒ�
-                    isbnET.setText(isbnStr);
-                    isbnET.setSelection(curPos-1);
-                }
-            }
-        });
-
-        enterTV.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                searchIsbn();
-            }
-        });
     }
 
-    /* �������͏���  */
-    void inputNum(String num) {
-        final SpannableStringBuilder isbnStr;
-        int curPos = isbnET.getSelectionStart();       // cursor�ʒu���Q�b�g
-        String curStr = isbnET.getText().toString();   // ���͂��ꂽ����
-        if ( curPos>=13 ) {
-            return;
-        }
-        isbnStr = new SpannableStringBuilder(curStr+num);   // ISBN�ԍ�
-        isbnStr.setSpan(isbnHeaderColor, 0, ISBN_HEADER_NUM, Spannable.SPAN_INCLUSIVE_INCLUSIVE);   // ISBN�ԍ��̓���3���̐F��ݒ�
-        isbnET.setText(isbnStr);
-        isbnET.setSelection(curPos+1);  //cursor�ʒu��ݒu
-    }
 
     private void searchIsbn() {
 
