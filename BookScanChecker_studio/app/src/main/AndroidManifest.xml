@@ -30,6 +30,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="jp.co.bookscan.checker.ISBNTabActivity"
+            android:label="@string/app_name"
+                android:alwaysRetainTaskState="true"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="jp.co.bookscan.checker.TopActivity"
             android:label="@string/app_name"
             android:alwaysRetainTaskState="true"
@@ -45,6 +51,12 @@
             android:name="jp.co.bookscan.checker.IsbnActivity"
             android:label=""            
             android:icon="@drawable/camera_small"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="jp.co.bookscan.checker.IsbnActivity10"
+            android:label="@string/app_name"
+            android:alwaysRetainTaskState="true"
             android:screenOrientation="portrait" >
         </activity>
         </application>
